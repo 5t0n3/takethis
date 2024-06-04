@@ -1,12 +1,8 @@
 require 'sinatra'
 require 'securerandom'
 
-configure do
-  set :token, ENV['TOKEN']
-end
-
 post '/upload' do
-  unless params['token'] == settings.token and params['file']
+  unless params['file']
     halt 400, 'bad request'
   end
 
